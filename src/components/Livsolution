@@ -1,0 +1,27 @@
+Create useState variables
+first one: array to store the numbers (number array) set to an empty array
+    const [variableName, setVariableName] = useState<type goes here>([])
+second one: stores the starting number, we're starting from 1
+    const [variableName2, setVariableName2] = useState<type goes here>(1)
+Create a function that will:
+a) increment the starting number by 1 (variableName2 + 1)
+b) add the number to empty array, like a history list
+    clue: setVariableName([...the array, the number])
+- end of that function
+Create a new function called fizzBuzzGame
+- takes in your array of numbers(the history list) as a parameter : number[]
+- will return either : (string or number)[]
+- inside the function, declare an empty array, which is gonna store the game results, like: [1, 2, fizz, 4 buzz, whatever]
+- now: adding a for loop inside this function
+- want to iterate over each number inside your history list
+clue: for (const number inside of variableName/history list){
+    do the fizz buzz logic
+    if number % 3 === 0, push fizz to the empty array you just made
+    if number % 5 === 0, push buzz to the empty array you just made
+    if none of these just push the number as it is
+}
+return the empty array you made for the game results
+// IN YOUR HTML TAGS
+- call the fizzBuzzGame function wherever you wangt the game results to be displayed
+- remember that function takes 1 parameter/arugment, so pass in the history list - <p>{fizzBuzzGame(historylist)}</p>
+- inside your button that will increase the number, pass that function name <button onClick={thatfunctionname}>next</button>

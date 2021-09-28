@@ -1,0 +1,41 @@
+import { useState } from "react";
+
+export default function FizzBuzz(): JSX.Element {
+  const [num, setNum] = useState(1); //sets number counter at one
+  const [number, setNumber] = useState<number[]>([]); 
+ 
+  const nextNumber = () => {setNum(num + 1);};
+  
+  const numList = () =>
+    setNumber((prevStoredValues:any) => [...prevStoredValues, num]);
+  
+  function isFizzBuzz(numberArr: number[]): (string | number)[] {
+    const finalArr: (string | number)[] = [];
+    for (const num of numberArr) {
+      if (num % 3 !== 0 && num % 5 !== 0) {
+        finalArr.push(num);
+      }
+      if (num % 5 === 0 && num % 3 === 0) {
+        finalArr.push("FizzBuzz");
+      } else if (num % 5 === 0) {
+        finalArr.push("Buzz");
+      } else if (num % 3 === 0) {
+        finalArr.push("Fizz");
+      }
+    }
+    return finalArr;
+  }
+  return (
+    <>
+      <h1>FizzBuzz</h1>
+      <div onClick={numList}>
+        <p>List: {isFizzBuzz(number).map((numArray,index) => (
+            <ul key = {index}>
+                {numArray}
+            </ul>
+        ))}</p>
+        <button onClick={nextNumber}>Next</button>
+      </div>
+    </>
+  );
+}
